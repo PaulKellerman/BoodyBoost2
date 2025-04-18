@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,15 +48,22 @@
             <a>
                 <img id="korz" src="/image/cart.svg">
             </a>
-
-            <a href="/registration.php">
-                Регистрация 
-                &nbsp | &nbsp
-            </a>
-
-            <a href="#">
-                Авторизация 
-            </a>
+            <php?
+                if (isset($_SESSION['user_id'])) {
+                    echo '<a class ="btn-ex" href="logout.php">Выйти</a>'; 
+                }
+                if (!isset($_SESSION['user_id'])){
+                   echo '<a href="/registration.php">
+                        Регистрация 
+                        &nbsp | &nbsp
+                    </a>
+        
+                    <a href="#">
+                        Авторизация 
+                    </a>';
+                }
+                ?>
+            
         </div>
         </div>
     </div>
